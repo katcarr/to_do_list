@@ -38,7 +38,7 @@ class List
 
   define_method(:tasks) do
     list_tasks = []
-    tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{id};")
+    tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{id} ORDER BY due_date;")
     tasks.each() do |task|
       description = task.fetch("description")
       list_id = task.fetch("list_id").to_i()
